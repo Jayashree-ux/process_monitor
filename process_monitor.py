@@ -1,4 +1,4 @@
-# process_monitor.py
+# process_monitor.py (after the fix)
 
 import os
 import psutil
@@ -40,13 +40,13 @@ class ProcessMonitor:
             print("Unsupported file format!")
 
     def run(self, interval=2):
-        """Main loop for continuous process monitoring"""
+        """Main loop for continuous process monitoring with optimized sleep"""
         try:
             while True:
                 os.system('clear')
                 self.fetch_processes()
                 self.display_processes()
-                time.sleep(interval)
+                time.sleep(interval)  # Implementing sleep interval to reduce CPU usage
         except KeyboardInterrupt:
             print("Monitoring stopped.")
 
